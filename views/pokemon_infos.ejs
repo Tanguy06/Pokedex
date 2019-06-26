@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <%  include partials/head %>
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col mb-4 mt-2">
+                <div class="card" style="width: 18rem; margin: auto;">
+                    <img src="<%= pokemon_infos.sprites.front_default %>" class="card-img-top card-header" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">#<%= pokemon_infos.id %> - <%= pokemon_infos.name %></h5>
+                        <hr>
+                            <p class="card-text">
+
+                                <span>Type(s) :</span>
+                                <% for(var types of pokemon_infos.types) {  %>
+
+                                    <div> <%= types.type.name; %> </div>
+                  
+                                <% } %>
+
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <%  include partials/footer %>
+
+  </body>
+</html>
+    

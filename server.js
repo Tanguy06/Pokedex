@@ -1,13 +1,6 @@
 var Pokedex = require('pokedex-promise-v2');
 var P = new Pokedex();
 
-P.getPokemonByName(34, function(response, error) { // with callback
-    if(!error) {
-      console.log(response);
-    } else {
-      console.log(error)
-    }
-  });
 
 const express = require('express');
 const app = express();
@@ -27,6 +20,18 @@ app.get('/', function(req, res){
 
 })
 
+app.get('/:PokemonName', function (req, res){
+
+
+    P.getPokemonByName(req.params.PokemonName, function(response, error) { // with callback
+        if(!error) {
+            res.render('pokemon_infos', {pokemon_infos: response});
+        } else {
+            res.send('error');
+        }
+      });
+})
+
 app.listen(3000, function () {
-    console.log('yo');
+    console.log('serveur prêt');
 })
